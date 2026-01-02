@@ -1,3 +1,8 @@
 from django.contrib import admin
+from .models import Mahalla
 
-# Register your models here.
+
+@admin.register(Mahalla)
+class MahallaAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'district')
+    search_fields = ('name', 'district')
