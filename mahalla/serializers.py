@@ -1,0 +1,7 @@
+from rest_framework import serializers
+from .models import Mahalla
+
+class MahallaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Mahalla
+        fields = '__all__'
