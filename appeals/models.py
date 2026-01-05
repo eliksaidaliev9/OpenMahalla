@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
-from mahalla.models import Mahalla
+from mahallas.models import Mahalla
 
 User = get_user_model()
 
