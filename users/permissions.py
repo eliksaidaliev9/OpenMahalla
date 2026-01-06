@@ -6,7 +6,21 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
         if request.method in permissions.SAFE_METHODS:
             return True
 
-        return obj.user == request.user
+        user = request.user
+        if user.is_authenticated and user.is_superuser:
+            return True
+
+        if hasattr(obj, 'user'):
+            if obj.user != request.user:
+                return False
+            return obj.status == 'new'
+
+        if obj == request.user:
+            if hasattr(request.user, 'appeals'):
+                if request.user.appeals.filter(status__in=['under_review', 'answered']).exists():
+                    return False
+            return True
+        return False
 
 
 class IsStaffOrReadOnly(permissions.BasePermission):
@@ -14,4 +28,12 @@ class IsStaffOrReadOnly(permissions.BasePermission):
         if request.method in permissions.SAFE_METHODS:
             return True
 
-        return request.user and request.user.is_staff
+        user = request.user
+        if user.is_authenticated and user.is_superuser:
+            return True
+
+        if user.is_authenticated and user.is_staff:
+            if hasattr(obj, 'status'):
+                return True
+            return False
+        return False

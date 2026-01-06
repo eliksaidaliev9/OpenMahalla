@@ -1,5 +1,3 @@
-from logging import raiseExceptions
-
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import action
@@ -13,11 +11,11 @@ from users.permissions import IsStaffOrReadOnly, IsOwnerOrReadOnly
 
 class AppealViewSet(ModelViewSet):
     serializer_class = AppealSerializer
-    permission_classes = IsOwnerOrReadOnly
+    permission_classes = [IsAuthenticated, IsOwnerOrReadOnly | IsStaffOrReadOnly]
 
     def get_queryset(self):
         user = self.queryset.user
-        if user.is_staff:
+        if user.is_staff or user.is_superuser:
             return Appeal.objects.all()
         return Appeal.objects.filter(user=user)
 
@@ -40,6 +38,5 @@ class AppealViewSet(ModelViewSet):
         appeal = self.get_object()
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-
         mark_answered(appeal, serializer.validated_data['answer'])
         return Response({"detail": "Javob berildi."})
