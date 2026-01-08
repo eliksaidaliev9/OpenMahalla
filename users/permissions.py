@@ -10,7 +10,7 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
         if user.is_authenticated and user.is_superuser:
             return True
 
-        if hasattr(obj, 'user'):
+        if hasattr(obj, 'status') and hasattr(obj, 'user'):
             if obj.user != request.user:
                 return False
             return obj.status == 'new'
@@ -37,3 +37,11 @@ class IsStaffOrReadOnly(permissions.BasePermission):
                 return True
             return False
         return False
+
+
+class IsSuperuser(permissions.BasePermission):
+    def has_permission(self, request, view):
+        return request.user.is_authenticated and request.user.is_superuser
+
+    def has_object_permission(self, request, view, obj):
+        return request.user.is_authenticated and request.user.is_superuser
