@@ -4,16 +4,15 @@
 • Built with Django REST Framework, secured via JWT authentication, and designed using clean architecture principles.
 
 ## 🛠 Tech Stack
-| **Category** | **Technology** |
 
-Language	          Python 3.13
+**Language:**	Python 3.13
 
-Framework	          Django 5, Django REST Framework
+**Framework:**  Django 6, Django REST Framework
 
-Database	          PostgreSQL
+**Database:**	PostgreSQL
 
-Authentication	    JWT (SimpleJWT), Djoser
+**Authentication:** JWT (SimpleJWT), Djoser
 
-API Docs	          Swagger (drf-yasg), Redoc
+**API Docs:**	Swagger (drf-yasg), Redoc
 
-DevOps	            Docker (optional)
+**DevOps:**	Docker, Docker Compose, Nginx
