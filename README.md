@@ -4,7 +4,7 @@
 • Built with Django REST Framework, secured via JWT authentication, and designed using clean architecture principles.
 
 ## 🛠 Tech Stack
-|**Category**|**Technology**|
+| **Category** | **Technology** |
 
 Language	          Python 3.13
 
