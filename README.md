@@ -16,3 +16,45 @@
 **API Docs:**	Swagger (drf-yasg), Redoc
 
 **DevOps:**	Docker, Docker Compose, Nginx
+
+## 🚀 Key Features
+
+🔐 Secure JWT Authentication
+
+👥 Role-based access control (Applicant / Staff / Admin)
+
+📨 Appeal lifecycle management
+
+🏘 Mahalla management system
+
+📚 Fully documented API (Swagger & Redoc)
+
+🧱 Scalable & maintainable architecture
+
+##👤 User Roles & Permissions
+
+**Applicant**
+
+• Register & login
+
+• Create appeals
+
+• Edit/Delete appeals only when status is new
+
+• View only own appeals
+
+**Staff**
+
+• View all appeals
+
+• Change appeal status
+
+• Provide official answers
+
+**Admin / Superuser**
+
+• Full system control
+
+• User management
+
+• Appeal & Mahalla management
