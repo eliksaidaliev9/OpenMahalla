@@ -31,7 +31,7 @@
 
 🧱 Scalable & maintainable architecture
 
-##👤 User Roles & Permissions
+## 👤 User Roles & Permissions
 
 **Applicant**
 
