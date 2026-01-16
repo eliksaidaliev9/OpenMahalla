@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['elixya.uz', 'www.elixya.uz']
+ALLOWED_HOSTS = ['openmahalla.uz', 'www.openmahalla.uz']
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-
+    'corsheaders',
     'rest_framework',
     'drf_yasg',
     'rest_framework_simplejwt',
@@ -196,10 +196,10 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 CELERY_BROKER_URL = os.environ.get('CELERY_BROKER_URL')
 CELERY_RESULT_BACKEND = os.environ.get('CELERY_RESULT_BACKEND')
 CSRF_TRUSTED_ORIGINS = [
-    "https://elixya.uz",
-    "https://www.elixya.uz",
-    "http://elixya.uz",
-    "http://www.elixya.uz",
+    "https://openmahalla.uz",
+    "https://www.openmahalla.uz",
+    "http://openmahalla.uz",
+    "http://www.openmahalla.uz",
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
