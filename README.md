@@ -33,7 +33,7 @@
 
 ## 👤 User Roles & Permissions
 
-**Applicant**
+**Applicant :**
 
 • Register & login
 
@@ -43,7 +43,7 @@
 
 • View only own appeals
 
-**Staff**
+**Staff :**
 
 • View all appeals
 
@@ -51,7 +51,7 @@
 
 • Provide official answers
 
-**Admin / Superuser**
+**Admin / Superuser :**
 
 • Full system control
 
