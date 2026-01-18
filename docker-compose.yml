@@ -22,7 +22,6 @@ services:
 
   db:
     image: postgres
-    container_name: openmahalla-db
     env_file:
       - .env
     volumes:
