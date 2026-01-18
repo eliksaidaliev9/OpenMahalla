@@ -1,22 +1,10 @@
 version: "3.9"
 services:
-  db:
-    image: postgres
-    env_file:
-      - .env
-    environment:
-      POSTGRES_DB: ${DB_NAME}
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-
   web:
     build: .
     container_name: openmahalla-web
     command: >
       bash -c "
-        ./wait-for-it.sh db:5432 --timeout=30
         python3 manage.py migrate &&
         python3 manage.py collectstatic --no-input &&
         gunicorn config.wsgi:application --bind 0.0.0.0:8000 --workers 1 --timeout 300 --log-level DEBUG
@@ -30,12 +18,15 @@ services:
       - "8001:8000"
     depends_on:
       - db
-    environment:
-      DB_NAME: ${DB_NAME}
-      DB_USER: ${DB_USER}
-      DB_PASSWORD: ${DB_PASSWORD}
-      DB_HOST: ${DB_HOST}
-      DB_PORT: ${DB_PORT}
+  db:
+    image: postgres
+    container_name: openmahalla-db
+    env_file:
+      - .env
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    ports:
+      - "5432:5432"
 
 volumes:
   postgres_data:
