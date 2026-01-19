@@ -24,6 +24,8 @@ class AppealViewSet(ModelViewSet):
         return Appeal.objects.filter(user=user)
 
     def perform_create(self, serializer):
+        if getattr(self, 'swagger_fake_view', False):
+            return Appeal.objects.none()
         serializer.save(user=self.request.user)
 
 
