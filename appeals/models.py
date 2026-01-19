@@ -1,3 +1,4 @@
+from django.utils import timezone
 from django.db import models
 from django.contrib.auth import get_user_model
 from mahallas.models import Mahalla
@@ -49,5 +50,5 @@ class Appeal(models.Model):
         self.status = self.Status.ANSWERED
         if answer_text:
             self.answer = answer_text
-        self.answered_at = models.DateTimeField.auto_now_add
+        self.answered_at = timezone.now()
         self.save(update_fields=['status', 'answer', 'answered_at'])
