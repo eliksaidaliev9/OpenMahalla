@@ -10,7 +10,7 @@ from users.permissions import IsStaffOrReadOnly, IsOwnerOrReadOnly
 
 
 class AppealViewSet(ModelViewSet):
-    permission_classes = [IsAuthenticated, IsOwnerOrReadOnly | IsStaffOrReadOnly]
+    permission_classes = [IsAuthenticated, IsOwnerOrReadOnly]
     queryset = Appeal.objects.all()
     serializer_class = AppealSerializer
 
