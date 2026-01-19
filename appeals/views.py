@@ -15,7 +15,7 @@ class AppealViewSet(ModelViewSet):
     queryset = Appeal.objects.all()
 
     def get_queryset(self):
-        user = self.queryset.user
+        user = self.request.user
         if user.is_staff or user.is_superuser:
             return Appeal.objects.all()
         return Appeal.objects.filter(user=user)
