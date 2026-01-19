@@ -10,11 +10,14 @@ from users.permissions import IsStaffOrReadOnly, IsOwnerOrReadOnly
 
 
 class AppealViewSet(ModelViewSet):
-    serializer_class = AppealSerializer
     permission_classes = [IsAuthenticated, IsOwnerOrReadOnly | IsStaffOrReadOnly]
     queryset = Appeal.objects.all()
+    serializer_class = AppealSerializer
 
     def get_queryset(self):
+        if getattr(self, 'swagger_fake_view', False):
+            return Appeal.objects.none()
+
         user = self.request.user
         if user.is_staff or user.is_superuser:
             return Appeal.objects.all()
