@@ -10,4 +10,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . /app/
 
-CMD ["gunicorn", "config.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "1", "--timeout", "300", "--log-level", "debug"]
+CMD ["gunicorn", "config.wsgi:application", "-b", "0.0.0.0:8000", "--workers", "1", "--timeout", "300", "--log-level", "debug"]
