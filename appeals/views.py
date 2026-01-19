@@ -12,6 +12,7 @@ from users.permissions import IsStaffOrReadOnly, IsOwnerOrReadOnly
 class AppealViewSet(ModelViewSet):
     serializer_class = AppealSerializer
     permission_classes = [IsAuthenticated, IsOwnerOrReadOnly | IsStaffOrReadOnly]
+    queryset = Appeal.objects.all()
 
     def get_queryset(self):
         user = self.queryset.user
