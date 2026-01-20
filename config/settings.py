@@ -143,6 +143,11 @@ REST_FRAMEWORK = {
 
 }
 
+# Swagger settings
+SWAGGER_SETTINGS = {
+    'DEFAULT_API_URL': 'https://openmahalla.uz/swagger.json',
+}
+
 # JWT settings
 SIMPLE_JWT = {
     'ALGORITHM': 'HS256',
