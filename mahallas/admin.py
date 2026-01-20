@@ -4,5 +4,5 @@ from .models import Mahalla
 
 @admin.register(Mahalla)
 class MahallaAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'district')
-    search_fields = ('name', 'district')
+    list_display = ('id', 'title', 'district')
+    search_fields = ('title', 'district')
