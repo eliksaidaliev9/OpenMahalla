@@ -6,10 +6,10 @@ from mahallas.models import Mahalla
 User = get_user_model()
 
 class Category(models.Model):
-    name = models.CharField(max_length=155)
+    title = models.CharField(max_length=155)
 
     def __str__(self):
-        return self.name
+        return self.title
 
 class Appeal(models.Model):
     class Status(models.TextChoices):
