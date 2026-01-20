@@ -9,4 +9,6 @@ class AppealSerializer(serializers.ModelSerializer):
         read_only_fields = ['user', 'status', 'answer', 'answered_at']
 
 class AppealAnswerSerializer(serializers.ModelSerializer):
-    answer = serializers.CharField()
+    class Meta:
+        model = Appeal
+        fields = ['answer']
