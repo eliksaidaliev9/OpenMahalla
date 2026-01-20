@@ -17,9 +17,6 @@ class AppealViewSet(ModelViewSet):
     def get_queryset(self):
         if getattr(self, 'swagger_fake_view', False):
             return Appeal.objects.none()
-        user = getattr(self.request, 'user', None)
-        if not user or user.is_anonymous:
-            return Appeal.objects.none()
 
         user = self.request.user
         if user.is_staff or user.is_superuser:
@@ -28,9 +25,6 @@ class AppealViewSet(ModelViewSet):
 
     def perform_create(self, serializer):
         if getattr(self, 'swagger_fake_view', False):
-            return
-        user = getattr(self.request, 'user', None)
-        if not user or user.is_anonymous:
             return
         serializer.save(user=self.request.user)
 
