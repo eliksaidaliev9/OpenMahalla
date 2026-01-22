@@ -15,17 +15,12 @@ class AppealViewSet(ModelViewSet):
     serializer_class = AppealSerializer
 
     def get_queryset(self):
-        if getattr(self, 'swagger_fake_view', False):
-            return Appeal.objects.none()
-
         user = self.request.user
         if user.is_staff or user.is_superuser:
             return Appeal.objects.all()
         return Appeal.objects.filter(user=user)
 
     def perform_create(self, serializer):
-        if getattr(self, 'swagger_fake_view', False):
-            return
         serializer.save(user=self.request.user)
 
 
