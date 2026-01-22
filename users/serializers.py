@@ -20,3 +20,4 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'phone_number', 'username', 'role', 'date_joined']
+        ref_name = "OpenMahallaUser"
