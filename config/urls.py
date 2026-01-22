@@ -57,10 +57,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/users', include('users.urls')),
 
-    path('api/v1/users/', include('djoser.urls')),
-    path('api/v1/users/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/v1/users/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('api/v1/users/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
+    path('api/v1/users_auth/', include('djoser.urls')),
+    path('api/v1/users_auth/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/v1/users_auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/v1/users_auth/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
 
     path('api/v1/appeals/', include('appeals.urls')),
     path('api/v1/mahallas/', include('mahallas.urls')),
