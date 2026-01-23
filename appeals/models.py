@@ -41,14 +41,3 @@ class Appeal(models.Model):
     @classmethod
     def answered(cls):
         return cls.objects.filter(status=cls.Status.ANSWERED)
-
-    def mark_under_review(self):
-        self.status = self.Status.UNDER_REVIEW
-        self.save(update_fields=['status'])
-
-    def mark_answered(self, answer_text: str = ''):
-        self.status = self.Status.ANSWERED
-        if answer_text:
-            self.answer = answer_text
-        self.answered_at = timezone.now()
-        self.save(update_fields=['status', 'answer', 'answered_at'])

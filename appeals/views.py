@@ -5,6 +5,7 @@ from rest_framework.response import Response
 
 from .models import Appeal
 from .serializers import AppealSerializer, AppealAnswerSerializer
+from .services import mark_under_review, mark_answered
 from users.permissions import IsStaffOrAdmin, IsOwnerAndEditable
 
 
@@ -26,7 +27,7 @@ class AppealViewSet(ModelViewSet):
         appeal = self.get_object()
 
         if request.user.is_staff and appeal.status == Appeal.Status.NEW:
-            appeal.mark_under_review()
+            mark_under_review(appeal)
 
         serializer = self.get_serializer(appeal)
         return Response(serializer.data)
@@ -41,6 +42,6 @@ class AppealViewSet(ModelViewSet):
         appeal = self.get_object()
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        appeal.mark_answered(serializer.validated_data['answer'])
+        mark_answered(appeal, serializer.validated_data['answer'])
 
         return Response({"detail": "Javob berildi."})
