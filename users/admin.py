@@ -9,10 +9,10 @@ class UserAdmin(admin.ModelAdmin):
     search_fields = ('username', 'phone_number')
 
     def save_model(self, request, obj, form, change):
-        if obj.role == 'is_superuser':
+        if obj.role == 'admin':
             obj.is_staff = True
             obj.is_superuser = True
-        elif obj.role == 'is_staff':
+        elif obj.role == 'staff':
             obj.is_staff = True
             obj.is_superuser = False
         else:
