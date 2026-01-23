@@ -5,11 +5,11 @@ from rest_framework.response import Response
 
 from .models import Appeal
 from .serializers import AppealSerializer, AppealAnswerSerializer
-from users.permissions import IsStaffOrReadOnly, IsOwnerOrReadOnly
+from users.permissions import IsStaffOrAdmin, IsOwnerAndEditable
 
 
 class AppealViewSet(ModelViewSet):
-    permission_classes = [IsAuthenticated, IsOwnerOrReadOnly]
+    permission_classes = [IsAuthenticated, IsOwnerAndEditable]
     queryset = Appeal.objects.all()
     serializer_class = AppealSerializer
 
@@ -34,7 +34,7 @@ class AppealViewSet(ModelViewSet):
     @action(
         detail=True,
         methods=['post'],
-        permission_classes=[IsStaffOrReadOnly],
+        permission_classes=[IsStaffOrAdmin],
         serializer_class=AppealAnswerSerializer
     )
     def answer(self, request, pk=None):
