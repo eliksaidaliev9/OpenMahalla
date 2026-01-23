@@ -7,6 +7,7 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ['id', 'phone_number', 'username', 'password']
         extra_kwargs = {'password': {'write_only': True}}
+        ref_name = "OpenMahallaUser"
 
     def create(self, validated_data):
         password = validated_data.pop('password')
