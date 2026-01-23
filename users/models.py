@@ -25,6 +25,8 @@ class UserManager(BaseUserManager):
 class User(AbstractUser, PermissionsMixin):
     ROLE_CHOICES = (
         ('applicant', 'Applicant'),
+        ('staff', 'Staff'),
+        ('admin', 'Admin'),
     )
 
     phone_number = models.CharField(max_length=15, unique=True, null=True)
