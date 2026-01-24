@@ -3,6 +3,9 @@ from .models import Appeal
 
 
 class AppealSerializer(serializers.ModelSerializer):
+    mahalla = serializers.SlugRelatedField(slug_field='title', read_only=True)
+    category = serializers.SlugRelatedField(slug_field='title', read_only=True)
+
     class Meta:
         model = Appeal
         fields = ['id', 'mahalla', 'category', 'description', 'status', 'answer']
