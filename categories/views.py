@@ -7,7 +7,6 @@ from users.permissions import IsStaffOrAdmin
 
 
 class CategoryViewSet(ModelViewSet):
-    permission_classes = [IsAuthenticated, IsStaffOrAdmin]
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
 
@@ -17,3 +16,8 @@ class CategoryViewSet(ModelViewSet):
         if user.is_staff or user.is_superuser:
             return Category.objects.all()
         return Category.objects.filter(is_active=True)
+
+    def get_permissions(self):
+        if self.action == 'list':
+            return [IsAuthenticated()]
+        return [IsStaffOrAdmin()]
