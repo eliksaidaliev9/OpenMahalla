@@ -5,8 +5,13 @@ from .models import Appeal
 class AppealSerializer(serializers.ModelSerializer):
     class Meta:
         model = Appeal
-        fields = ['id', 'mahalla', 'category', 'description']
-        read_only_fields = ['user', 'status', 'answer', 'answered_at']
+        fields = ['id', 'mahalla', 'category', 'description', 'status', 'answer']
+        read_only_fields = ['user', 'status', 'answered_at']
+
+    def get_answer(self, obj):
+        if obj.status == Appeal.Status.ANSWERED:
+            return obj.answer
+        return
 
 class AppealAnswerSerializer(serializers.ModelSerializer):
     class Meta:
