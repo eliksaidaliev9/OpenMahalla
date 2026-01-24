@@ -1,11 +1,5 @@
 from django.contrib import admin
-from .models import Appeal, Category
-
-
-@admin.register(Category)
-class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title')
-    search_fields = ('title',)
+from .models import Appeal
 
 @admin.register(Appeal)
 class AppealAdmin(admin.ModelAdmin):

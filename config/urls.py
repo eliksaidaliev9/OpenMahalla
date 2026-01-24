@@ -62,8 +62,9 @@ urlpatterns = [
     path('api/v1/users_auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/v1/users_auth/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
 
-    path('api/v1/appeals/', include('appeals.urls')),
-    path('api/v1/mahallas/', include('mahallas.urls')),
+    path('api/v1/', include('appeals.urls')),
+    path('api/v1/', include('categories.urls')),
+    path('api/v1/', include('mahallas.urls')),
 
     re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path('', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
