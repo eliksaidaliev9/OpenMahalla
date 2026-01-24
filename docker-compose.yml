@@ -16,8 +16,11 @@ services:
       - .env
     ports:
       - "8001:8000"
+    networks:
+      - app-network
     depends_on:
       - db
+
   db:
     image: postgres
     env_file:
@@ -26,7 +29,13 @@ services:
       - postgres_data:/var/lib/postgresql
     ports:
       - "5432:5432"
+    networks:
+      - app-network
 
 volumes:
   postgres_data:
   static_volume:
+
+networks:
+  app-network:
+    driver: bridge
