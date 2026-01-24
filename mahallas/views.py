@@ -9,7 +9,7 @@ class MahallaViewSet(viewsets.ModelViewSet):
     queryset = Mahalla.objects.all()
     serializer_class = MahallaSerializer
     filter_backends = [filters.SearchFilter]
-    search_fields = ['name', 'district']
+    search_fields = ['title', 'district']
 
     def get_permissions(self):
         if self.action == 'list':
