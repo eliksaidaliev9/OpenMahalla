@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     'appeals',
     'mahallas',
     'users',
-    'categories'
+    'categories',
 ]
 
 MIDDLEWARE = [
