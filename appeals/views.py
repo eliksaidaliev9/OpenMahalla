@@ -23,8 +23,8 @@ class AppealViewSet(ModelViewSet):
 
     def get_serializer_class(self):
         if self.action in ['list', 'retrieve']:
-            return [AppealListSerializer()]
-        return [AppealSerializer]
+            return AppealListSerializer
+        return AppealSerializer
 
     def get_queryset(self):
         user = self.request.user
