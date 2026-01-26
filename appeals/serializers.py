@@ -21,6 +21,7 @@ class AppealAnswerSerializer(serializers.ModelSerializer):
 class AppealListSerializer(serializers.ModelSerializer):
     mahalla = serializers.SlugRelatedField(slug_field='title', read_only=True)
     category = serializers.SlugRelatedField(slug_field='title', read_only=True)
+    user = serializers.SlugRelatedField(slug_field=)
 
     class Meta:
         model = Appeal
