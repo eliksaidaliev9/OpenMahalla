@@ -5,7 +5,7 @@ from .models import Appeal
 class AppealSerializer(serializers.ModelSerializer):
     class Meta:
         model = Appeal
-        fields = ['id', 'mahalla', 'category', 'description']
+        fields = ['id', 'full_name', 'mahalla', 'category', 'description']
         read_only_fields = ['user', 'status', 'answer', 'created_at', 'answered_at']
 
     def get_answer(self, obj):
