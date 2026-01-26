@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from .models import Appeal
-from .serializers import AppealSerializer, AppealAnswerSerializer
+from .serializers import AppealSerializer, AppealAnswerSerializer, AppealListSerializer
 from .services import mark_under_review, mark_answered
 from users.permissions import IsStaffOrAdmin, IsOwnerAndEditable
 
@@ -17,9 +17,14 @@ class AppealViewSet(ModelViewSet):
     def get_permissions(self):
         if self.action in ['answer', 'under_review']:
             return [IsStaffOrAdmin()]
-        if self.action in ['update', 'partial_update', 'delete']:
+        if self.action in ['update', 'partial_update', 'destroy']:
             return [IsAuthenticated(), IsOwnerAndEditable()]
         return [IsAuthenticated()]
+
+    def get_serializer_class(self):
+        if self.action in ['list', 'retrieve']:
+            return [AppealListSerializer()]
+        return [AppealSerializer]
 
     def get_queryset(self):
         user = self.request.user

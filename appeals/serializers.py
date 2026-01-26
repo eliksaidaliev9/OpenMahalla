@@ -3,12 +3,9 @@ from .models import Appeal
 
 
 class AppealSerializer(serializers.ModelSerializer):
-    mahalla = serializers.SlugRelatedField(slug_field='title', read_only=True)
-    category = serializers.SlugRelatedField(slug_field='title', read_only=True)
-
     class Meta:
         model = Appeal
-        fields = ['id', 'mahalla', 'category', 'description', 'status', 'answer']
+        fields = ['id', 'mahalla', 'category', 'description', 'created_at', 'status', 'answer']
         read_only_fields = ['user', 'status', 'answered_at']
 
     def get_answer(self, obj):
@@ -20,3 +17,11 @@ class AppealAnswerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Appeal
         fields = ['answer']
+
+class AppealListSerializer(serializers.ModelSerializer):
+    mahalla = serializers.SlugRelatedField(slug_field='title', read_only=True)
+    category = serializers.SlugRelatedField(slug_field='title', read_only=True)
+
+    class Meta:
+        model = Appeal
+        fields = '__all__'
