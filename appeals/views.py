@@ -12,7 +12,6 @@ from users.permissions import IsStaffOrAdmin, IsOwnerAndEditable
 
 class AppealViewSet(ModelViewSet):
     queryset = Appeal.objects.all()
-    serializer_class = AppealSerializer
 
     def get_permissions(self):
         if self.action in ['answer', 'under_review']:
