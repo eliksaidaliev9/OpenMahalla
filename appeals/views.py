@@ -30,7 +30,13 @@ class AppealViewSet(ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
-    @action(detail=True, methods=['post'], permission_classes=[IsStaffOrAdmin], url_path='under-review')
+    @action(
+        detail=True,
+        methods=['post'],
+        permission_classes=[IsStaffOrAdmin],
+        url_path='under-review',
+        serializer_class=None,
+    )
     def under_review(self, request, pk=None):
         appeal = self.get_object()
 
