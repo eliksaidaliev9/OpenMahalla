@@ -25,6 +25,8 @@ class AppealViewSet(ModelViewSet):
             return AppealListSerializer
         if self.action == 'answer':
             return AppealAnswerSerializer
+        if self.action == 'under_review':
+            return None
         return AppealSerializer
 
     def get_queryset(self):
