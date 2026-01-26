@@ -13,10 +13,12 @@ class AppealSerializer(serializers.ModelSerializer):
             return obj.answer
         return
 
+
 class AppealAnswerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Appeal
         fields = ['answer']
+
 
 class AppealListSerializer(serializers.ModelSerializer):
     mahalla = serializers.SlugRelatedField(slug_field='title', read_only=True)
@@ -25,3 +27,15 @@ class AppealListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Appeal
         fields = '__all__'
+
+
+class AppealPatchSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Appeal
+        fields = ['id', 'full_name', 'mahalla', 'category', 'description']
+        extra_kwargs = {
+            'full_name': {'required': False},
+            'mahalla': {'required': False},
+            'category': {'required': False},
+            'description': {'required': False},
+        }

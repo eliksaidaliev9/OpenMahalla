@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from .models import Appeal
-from .serializers import AppealSerializer, AppealAnswerSerializer, AppealListSerializer
+from .serializers import AppealSerializer, AppealAnswerSerializer, AppealListSerializer, AppealPatchSerializer
 from .services import mark_under_review, mark_answered
 from users.permissions import IsStaffOrAdmin, IsOwnerAndEditable
 
@@ -25,6 +25,8 @@ class AppealViewSet(ModelViewSet):
             return AppealListSerializer
         if self.action == 'answer':
             return AppealAnswerSerializer
+        if self.action == 'partial_update':
+            return AppealPatchSerializer
         if self.action == 'under_review':
             return None
         return AppealSerializer
