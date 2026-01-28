@@ -26,7 +26,7 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView
 )
 
-
+#  Swagger security setup for JWT Token
 class JWTSchemaGenerator(OpenAPISchemaGenerator):
     def get_security_definitions(self):
         security_definitions = super().get_security_definitions()
@@ -37,7 +37,7 @@ class JWTSchemaGenerator(OpenAPISchemaGenerator):
         }
         return security_definitions
 
-
+# Swagger / OpenAPI documentation
 schema_view = get_schema_view(
     openapi.Info(
         title="OpenMahalla API",
@@ -54,18 +54,19 @@ schema_view = get_schema_view(
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/v1/', include('users.urls')),
+    path('admin/', admin.site.urls),  # Admin panel
+    path('api/v1/', include('users.urls')),  # Users app endpoints
 
-    path('api/v1/users_auth/', include('djoser.urls')),
-    path('api/v1/users_auth/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/v1/users_auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('api/v1/users_auth/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
+    path('api/v1/users_auth/', include('djoser.urls')),  # Djoser auth endpoints
+    path('api/v1/users_auth/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),  # JWT create
+    path('api/v1/users_auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),  # JWT renewal
+    path('api/v1/users_auth/token/verify/', TokenVerifyView.as_view(), name='token_verify'),  # JWT validation
 
-    path('api/v1/', include('appeals.urls')),
-    path('api/v1/', include('categories.urls')),
-    path('api/v1/', include('mahallas.urls')),
+    path('api/v1/', include('appeals.urls')),  # appeals app endpoints
+    path('api/v1/', include('categories.urls')),  # categories app endpoints
+    path('api/v1/', include('mahallas.urls')),  # mahallas app endpoints
 
+    # Swagger / OpenAPI endpoints
     re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path('', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),

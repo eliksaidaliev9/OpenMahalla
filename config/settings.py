@@ -29,8 +29,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
+# Allowed domains
 ALLOWED_HOSTS = ['openmahalla.uz', 'www.openmahalla.uz']
 
+# HTTPS for reverse proxy
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
@@ -56,6 +58,7 @@ INSTALLED_APPS = [
     'categories',
 ]
 
+# MIDDLEWARE
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -69,6 +72,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'config.urls'
 
+# TEMPLATES
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -190,11 +194,10 @@ DJOSER = {
     'SERIALIZERS': {},
 }
 
+# CSRF va CORS
 CSRF_TRUSTED_ORIGINS = [
     "https://openmahalla.uz",
     "https://www.openmahalla.uz",
     "http://openmahalla.uz",
     "http://www.openmahalla.uz",
 ]
-
-CORS_ALLOW_ALL_ORIGINS = True
