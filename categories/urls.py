@@ -2,7 +2,7 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .views import CategoryViewSet
 
-# DRF DefaultRouter yaratish
+# Create DRF DefaultRouter
 router = DefaultRouter()
 # Bind the 'categories' endpoint to the CategoryViewSet
 # Basename='category' -> used for reverse URL name
