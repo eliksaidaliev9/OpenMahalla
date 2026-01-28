@@ -7,6 +7,7 @@ from .serializers import MahallaSerializer
 # ViewSet for the Mahalla model
 class MahallaViewSet(viewsets.ModelViewSet):
     # ModelViewSet provides automatic CRUD operations: list, retrieve, create, update, destroy
+
     queryset = Mahalla.objects.all()  # Queryset for mahalla list
     serializer_class = MahallaSerializer # Serializer that converts the Mahalla model to JSON format
 
