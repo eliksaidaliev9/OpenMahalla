@@ -54,7 +54,6 @@ class AppealViewSet(ModelViewSet):
         methods=['post'],
         permission_classes=[IsStaffOrAdmin], # Only staff/admin
         url_path='under-review', # URL: /appeals/<id>/under-review/
-        serializer_class=None,
     )
     def under_review(self, request, pk=None):
     # Get_object() is a ModelViewSet method that retrieves the corresponding Appeal object

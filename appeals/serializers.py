@@ -3,10 +3,11 @@ from .models import Appeal
 
 # Serializer to create/view user reference
 class AppealSerializer(serializers.ModelSerializer):
+    answer = serializers.SerializerMethodField()
     class Meta:
         model = Appeal
         # These are the fields that the user can view and create through the serializer
-        fields = ['id', 'full_name', 'mahalla', 'category', 'description']
+        fields = ['id', 'full_name', 'mahalla', 'category', 'description', 'user', 'status', 'answer', 'created_at', 'answered_at']
         # The following fields are read-only, the user cannot submit them.
         read_only_fields = ['user', 'status', 'answer', 'created_at', 'answered_at']
     # The answer is only displayed if the status is "ANSWERED".
