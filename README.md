@@ -138,3 +138,15 @@ All endpoints are documented using Swagger UI.
 • Uses JWT Bearer Token authentication.
 
 • Authorization: Bearer <access_token>
+
+## 📈 Future Improvements
+
+📩 Email / SMS notifications
+
+📎 File attachments for appeals
+
+📊 Analytics dashboard
+
+🏘️ Multi-tenant mahalla support
+
+🧑‍💼 Panel for staff to improve work
