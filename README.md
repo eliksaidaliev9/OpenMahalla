@@ -108,9 +108,9 @@ All endpoints are documented using Swagger UI.
 
 **1️⃣ Clone Repository:**
 
-• git clone https://github.com/eliksaidaliev9/E-commerce.git
+• git clone https://github.com/eliksaidaliev9/OpenMahalla.git
 
-• cd E-commerce
+• cd Openmahalla
 
 
 **2️⃣ Environment Variables:**
