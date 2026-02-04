@@ -3,6 +3,10 @@
 
 • The project is built with Django REST Framework and secured using JWT authentication, following real-world backend architecture principles.
 
+## 🌐 Live Swagger API Documentation
+
+https://openmahalla.uz/
+
 ## 📌 Project Purpose
 **The goal of this project is to replace traditional (paper-based or verbal) appeals with a:**
 
