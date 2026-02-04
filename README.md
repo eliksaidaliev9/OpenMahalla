@@ -85,3 +85,13 @@ online system that improves communication between citizens and local administrat
 🏷️ Category — classification of appeals
 
 🏘️ Mahalla — local administrative units
+
+## 🔐 Security
+
+🔑 JWT-based API authentication
+
+🛂 Role-based and object-level permissions
+
+🧑‍💼 Secure Django Admin Panel
+
+🚫 Protected endpoints by user role
