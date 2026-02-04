@@ -5,7 +5,7 @@
 
 ## 🌐 Live Swagger API Documentation
 
-https://openmahalla.uz/
+👉 https://openmahalla.uz/
 
 ## 📌 Project Purpose
 **The goal of this project is to replace traditional (paper-based or verbal) appeals with a:**
