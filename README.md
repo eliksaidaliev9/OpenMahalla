@@ -75,3 +75,13 @@ online system that improves communication between citizens and local administrat
 • Appeal & Mahalla management
 
 **🔒 Object-level permissions ensure users can modify only their own appeals and only in allowed states.**
+
+## 🗂️ Core Domain Models
+
+👤 User — custom authentication model with roles
+
+📝 Appeal — citizen requests with status tracking
+
+🏷️ Category — classification of appeals
+
+🏘️ Mahalla — local administrative units
