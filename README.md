@@ -1,21 +1,34 @@
 ## 🏘 OpenMahalla API
-• OpenMahalla is a scalable REST API that digitizes citizen appeals and communication with local community (Mahalla) administrations.
+• OpenMahalla is a backend REST API designed to digitalize the process of submitting, reviewing, and answering citizen appeals at the mahalla (local community) level.
 
-• Built with Django REST Framework, secured via JWT authentication, and designed using clean architecture principles.
+• The project is built with Django REST Framework and secured using JWT authentication, following real-world backend architecture principles.
+
+## 📌 Project Purpose
+**The goal of this project is to replace traditional (paper-based or verbal) appeals with a:**
+
+• Structured
+
+• Transparent
+
+• Manageable
+
+online system that improves communication between citizens and local administrations.
 
 ## 🛠 Tech Stack
 
-**Language:**	Python 3.13
+🐍 Python 3.13
 
-**Framework:**  Django 6, Django REST Framework
+🌐 Django 6.0
 
-**Database:**	PostgreSQL
+🔁 Django REST Framework
 
-**Authentication:** JWT (SimpleJWT), Djoser
+🗄️ PostgreSQL
 
-**API Docs:**	Swagger (drf-yasg), Redoc
+🔑 JWT (SimpleJWT)
 
-**DevOps:**	Docker, Docker Compose, Nginx
+🐳 Docker & Docker Compose
+
+📘 Swagger (drf-yasg)
 
 ## 🚀 Key Features
 
@@ -27,9 +40,11 @@
 
 🏘 Mahalla management system
 
+🐳 Dockerized deployment
+
 📚 Fully documented API (Swagger & Redoc)
 
-🧱 Scalable & maintainable architecture
+🧱 Clean layered backend architecture
 
 ## 👤 User Roles & Permissions
 
