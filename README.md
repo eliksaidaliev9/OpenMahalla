@@ -103,3 +103,38 @@ online system that improves communication between citizens and local administrat
 ## 📌 API Documentation
 
 All endpoints are documented using Swagger UI.
+
+## 🐳 Getting Started (Docker)
+
+**1️⃣ Clone Repository:**
+
+• git clone https://github.com/eliksaidaliev9/E-commerce.git
+
+• cd E-commerce
+
+
+**2️⃣ Environment Variables:**
+
+**Create a .env file:**
+
+• SECRET_KEY=your_secret_key
+
+• POSTGRES_DB=openmahalla
+
+• POSTGRES_USER=postgres
+
+• POSTGRES_PASSWORD=postgres
+
+• POSTGRES_HOST=db
+
+• POSTGRES_PORT=5432
+
+**3️⃣ Build & Run:**
+
+• docker-compose up -d --build
+
+## 🔐 Authentication
+
+• Uses JWT Bearer Token authentication.
+
+• Authorization: Bearer <access_token>
