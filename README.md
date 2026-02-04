@@ -150,3 +150,20 @@ All endpoints are documented using Swagger UI.
 🏘️ Multi-tenant mahalla support
 
 🧑‍💼 Panel for staff to improve work
+
+## 🧠 Author
+
+**Elyor Mahamadjanov**
+
+**Backend Developer**
+
+**🌐 Website:** https://openmahalla.uz/
+
+**📧 Email:** elik.saidaliev9@gmail.com
+
+**💼 GitHub:** https://github.com/eliksaidaliev9
+
+
+## ⭐️ Support
+
+If you find this project useful, please consider giving it a ⭐️ on GitHub.
