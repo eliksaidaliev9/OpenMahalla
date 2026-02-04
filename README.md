@@ -99,3 +99,7 @@ online system that improves communication between citizens and local administrat
 🧑‍💼 Secure Django Admin Panel
 
 🚫 Protected endpoints by user role
+
+## 📌 API Documentation
+
+All endpoints are documented using Swagger UI.
