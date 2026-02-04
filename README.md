@@ -73,3 +73,5 @@ online system that improves communication between citizens and local administrat
 • User management
 
 • Appeal & Mahalla management
+
+**🔒 Object-level permissions ensure users can modify only their own appeals and only in allowed states.**
