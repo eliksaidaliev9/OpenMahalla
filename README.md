@@ -133,7 +133,7 @@ All endpoints are documented using Swagger UI.
 
 • docker-compose up -d --build
 
-## 🔐 Authentication
+**🔐 Authentication**
 
 • Uses JWT Bearer Token authentication.
 
