@@ -33,7 +33,7 @@ services:
       - app-network
 
 volumes:
-  postgres_data:
+  openmahalla_postgres_data:
   static_volume:
 
 networks:
