@@ -9,9 +9,15 @@ class IsOwnerAndEditable(permissions.BasePermission):
         # Only NEW status application
        return request.user.is_authenticated and obj.user == request.user and obj.status == Appeal.Status.NEW
 
-# Permission for Staff
+# Permission for Staff or Admin
+class IsStaffOrAdmin(permissions.BasePermission):
+    def has_permission(self, request, view):
+        return request.user.is_authenticated and (request.user.is_staff or request.user.is_superuser)
+
+# Permission only for Staff
 class IsStaff(permissions.BasePermission):
     def has_permission(self, request, view):
+        # Only a user who is a staff will have permission
         return request.user.is_authenticated and request.user.is_staff
 
 # Permission only for Admin (superuser)
