@@ -16,11 +16,11 @@ class AppealViewSet(ModelViewSet):
 
 # Setting permissions for each action
     def get_permissions(self):
-        # "List", "Retrieve", "Answer" and "Under_Review" actions are only available to staff
-        if self.action in ['list','retrieve', 'answer', 'under_review']:
-            return [IsStaff()]
+        # "Answer" and "Under_Review" actions are only available to staff/admin
+        if self.action in ['answer', 'under_review']:
+            return [IsStaffOrAdmin()]
 # Update, partial_update and delete are only available to the user with their own request and an authenticated user
-        if self.action in ['update', 'partial_update', 'destroy']:
+        if self.action in ['create', 'update', 'partial_update', 'destroy']:
             return [IsAuthenticated(), IsOwnerAndEditable()]
         # require only authentication for other actions
         return [IsAuthenticated()]
