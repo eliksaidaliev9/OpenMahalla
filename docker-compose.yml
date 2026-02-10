@@ -34,7 +34,9 @@ services:
 
 volumes:
   postgres_data:
+    external: true
   static_volume:
+    external: true
 
 networks:
   app-network:
