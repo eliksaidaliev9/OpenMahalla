@@ -22,10 +22,13 @@ class AppealViewSet(ModelViewSet):
             return [IsStaffOrAdmin()]
 # Update, partial_update and delete are only available to the user with their own request and an authenticated user
         if self.action in ['create', 'update', 'partial_update', 'destroy']:
+# Create, update, partial_update and destroy actions are not allowed if the user has a staff and
+# DRF automatically released the 403 "you do not have permission to perform this action." returns an error response.
             if self.request.user.is_staff:
                 raise PermissionDenied("You do not have permission to perform this action.")
+        # Ordinary user, it is allowed to edit only its own appeal.
             return [IsAuthenticated(), IsOwnerAndEditable()]
-        # require only authentication for other actions
+        # Require only authentication for other actions
         return [IsAuthenticated()]
 
 # Choosing a serializer for each action
