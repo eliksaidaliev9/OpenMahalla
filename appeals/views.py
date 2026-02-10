@@ -7,7 +7,7 @@ from rest_framework import status
 from .models import Appeal
 from .serializers import AppealSerializer, AppealAnswerSerializer, AppealListSerializer
 from .services import mark_under_review, mark_answered
-from users.permissions import IsStaffOrAdmin, IsOwnerAndEditable, IsStaff
+from users.permissions import IsStaffOrAdmin, IsOwnerAndEditable
 
 
 class AppealViewSet(ModelViewSet):
@@ -21,6 +21,8 @@ class AppealViewSet(ModelViewSet):
             return [IsStaffOrAdmin()]
 # Update, partial_update and delete are only available to the user with their own request and an authenticated user
         if self.action in ['create', 'update', 'partial_update', 'destroy']:
+            if self.request.user.is_staff:
+                return [IsAuthenticated(), IsOwnerAndEditable()]
             return [IsAuthenticated(), IsOwnerAndEditable()]
         # require only authentication for other actions
         return [IsAuthenticated()]
@@ -74,17 +76,6 @@ class AppealViewSet(ModelViewSet):
             {"detail": "Murojaat 'Under review' holatiga o'tkazildi"},
             status=status.HTTP_200_OK
         )
-
-    # Customizing the retrieve action
-    def retrieve(self, request, *args, **kwargs):
-        # Get the corresponding Appeal object by pk in the URL using get_object()
-        # If the object is not found, DRF automatically returns a 404
-        appeal = self.get_object()
-        # Convert the received object to JSON format using a serializer
-        # get_serializer() – chooses the correct serializer based on get_serializer_class()
-        serializer = self.get_serializer(appeal)
-        # Return JSON data via Response
-        return Response(serializer.data)
 
     # Custom action: Reply to request
     @action(
