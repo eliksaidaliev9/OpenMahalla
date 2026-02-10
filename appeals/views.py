@@ -3,6 +3,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.exceptions import PermissionDenied
 
 from .models import Appeal
 from .serializers import AppealSerializer, AppealAnswerSerializer, AppealListSerializer
@@ -21,6 +22,8 @@ class AppealViewSet(ModelViewSet):
             return [IsStaffOrAdmin()]
 # Update, partial_update and delete are only available to the user with their own request and an authenticated user
         if self.action in ['create', 'update', 'partial_update', 'destroy']:
+            if self.request.user.is_staff:
+                raise PermissionDenied("You do not have permission to perform this action.")
             return [IsAuthenticated(), IsOwnerAndEditable()]
         # require only authentication for other actions
         return [IsAuthenticated()]
@@ -46,8 +49,6 @@ class AppealViewSet(ModelViewSet):
 
 # Add user to serializer in Create action
     def perform_create(self, serializer):
-        if self.request.user.is_staff:
-            return [IsAuthenticated(), IsOwnerAndEditable()]
         serializer.save(user=self.request.user)
 
 # Custom action: Move the request to "Under Review"
