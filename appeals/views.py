@@ -21,8 +21,6 @@ class AppealViewSet(ModelViewSet):
             return [IsStaffOrAdmin()]
 # Update, partial_update and delete are only available to the user with their own request and an authenticated user
         if self.action in ['create', 'update', 'partial_update', 'destroy']:
-            if self.request.user.is_staff:
-                return [IsAuthenticated(), IsOwnerAndEditable()]
             return [IsAuthenticated(), IsOwnerAndEditable()]
         # require only authentication for other actions
         return [IsAuthenticated()]
@@ -48,6 +46,8 @@ class AppealViewSet(ModelViewSet):
 
 # Add user to serializer in Create action
     def perform_create(self, serializer):
+        if self.request.user.is_staff:
+            return [IsAuthenticated(), IsOwnerAndEditable()]
         serializer.save(user=self.request.user)
 
 # Custom action: Move the request to "Under Review"
