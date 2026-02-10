@@ -1,21 +1,38 @@
 ## 🏘 OpenMahalla API
-• OpenMahalla is a scalable REST API that digitizes citizen appeals and communication with local community (Mahalla) administrations.
+• OpenMahalla is a backend REST API designed to digitalize the process of submitting, reviewing, and answering citizen appeals at the mahalla (local community) level.
 
-• Built with Django REST Framework, secured via JWT authentication, and designed using clean architecture principles.
+• The project is built with Django REST Framework and secured using JWT authentication, following real-world backend architecture principles.
+
+## 🌐 Live Swagger API Documentation
+
+👉 https://openmahalla.uz/
+
+## 📌 Project Purpose
+**The goal of this project is to replace traditional (paper-based or verbal) appeals with a:**
+
+• Structured
+
+• Transparent
+
+• Manageable
+
+online system that improves communication between citizens and local administrations.
 
 ## 🛠 Tech Stack
 
-**Language:**	Python 3.13
+🐍 Python 3.13
 
-**Framework:**  Django 6, Django REST Framework
+🌐 Django 6.0
 
-**Database:**	PostgreSQL
+🔁 Django REST Framework
 
-**Authentication:** JWT (SimpleJWT), Djoser
+🗄️ PostgreSQL
 
-**API Docs:**	Swagger (drf-yasg), Redoc
+🔑 JWT (SimpleJWT)
 
-**DevOps:**	Docker, Docker Compose, Nginx
+🐳 Docker & Docker Compose
+
+📘 Swagger (drf-yasg)
 
 ## 🚀 Key Features
 
@@ -27,9 +44,11 @@
 
 🏘 Mahalla management system
 
+🐳 Dockerized deployment
+
 📚 Fully documented API (Swagger & Redoc)
 
-🧱 Scalable & maintainable architecture
+🧱 Clean layered backend architecture
 
 ## 👤 User Roles & Permissions
 
@@ -58,3 +77,93 @@
 • User management
 
 • Appeal & Mahalla management
+
+**🔒 Object-level permissions ensure users can modify only their own appeals and only in allowed states.**
+
+## 🗂️ Core Domain Models
+
+👤 User — custom authentication model with roles
+
+📝 Appeal — citizen requests with status tracking
+
+🏷️ Category — classification of appeals
+
+🏘️ Mahalla — local administrative units
+
+## 🔐 Security
+
+🔑 JWT-based API authentication
+
+🛂 Role-based and object-level permissions
+
+🧑‍💼 Secure Django Admin Panel
+
+🚫 Protected endpoints by user role
+
+## 📌 API Documentation
+
+All endpoints are documented using Swagger UI.
+
+## 🐳 Getting Started (Docker)
+
+**1️⃣ Clone Repository:**
+
+• git clone https://github.com/eliksaidaliev9/OpenMahalla.git
+
+• cd Openmahalla
+
+
+**2️⃣ Environment Variables:**
+
+**Create a .env file:**
+
+• SECRET_KEY=your_secret_key
+
+• POSTGRES_DB=openmahalla
+
+• POSTGRES_USER=postgres
+
+• POSTGRES_PASSWORD=postgres
+
+• POSTGRES_HOST=db
+
+• POSTGRES_PORT=5432
+
+**3️⃣ Build & Run:**
+
+• docker-compose up -d --build
+
+**🔐 Authentication**
+
+• Uses JWT Bearer Token authentication.
+
+• Authorization: Bearer <access_token>
+
+## 📈 Future Improvements
+
+📩 Email / SMS notifications
+
+📎 File attachments for appeals
+
+📊 Analytics dashboard
+
+🏘️ Multi-tenant mahalla support
+
+🧑‍💼 Panel for staff to improve work
+
+## 🧠 Author
+
+**Elyor Mahamadjanov**
+
+**Backend Developer**
+
+**🌐 Website:** https://openmahalla.uz/
+
+**📧 Email:** elik.saidaliev9@gmail.com
+
+**💼 GitHub:** https://github.com/eliksaidaliev9
+
+
+## ⭐️ Support
+
+If you find this project useful, please consider giving it a ⭐️ on GitHub.
