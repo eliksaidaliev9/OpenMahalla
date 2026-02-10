@@ -7,7 +7,7 @@ from rest_framework import status
 from .models import Appeal
 from .serializers import AppealSerializer, AppealAnswerSerializer, AppealListSerializer
 from .services import mark_under_review, mark_answered
-from users.permissions import IsStaffOrAdmin, IsOwnerAndEditable
+from users.permissions import IsStaffOrAdmin, IsOwnerAndEditable, IsStaff
 
 
 class AppealViewSet(ModelViewSet):
@@ -16,9 +16,9 @@ class AppealViewSet(ModelViewSet):
 
 # Setting permissions for each action
     def get_permissions(self):
-        # "Answer" and "Under_Review" actions are only available to staff and admin
-        if self.action in ['answer', 'under_review']:
-            return [IsStaffOrAdmin()]
+        # "List", "Retrieve", "Answer" and "Under_Review" actions are only available to staff
+        if self.action in ['list','retrieve', 'answer', 'under_review']:
+            return [IsStaff()]
 # Update, partial_update and delete are only available to the user with their own request and an authenticated user
         if self.action in ['update', 'partial_update', 'destroy']:
             return [IsAuthenticated(), IsOwnerAndEditable()]
