@@ -9,14 +9,10 @@ class IsOwnerAndEditable(permissions.BasePermission):
         # Only NEW status application
        return request.user.is_authenticated and obj.user == request.user and obj.status == Appeal.Status.NEW
 
-# Permission for Staff or Admin
-class IsStaffOrAdmin(permissions.BasePermission):
+# Permission for Staff
+class IsStaff(permissions.BasePermission):
     def has_permission(self, request, view):
-        # SAFE_METHODS (GET, HEAD, OPTIONS) is public
-        if request.method in permissions.SAFE_METHODS:
-            return True
-        # POST, PUT, PATCH, DELETE only for staff or admin
-        return request.user.is_authenticated and (request.user.is_staff or request.user.is_superuser)
+        return request.user.is_authenticated and request.user.is_staff
 
 # Permission only for Admin (superuser)
 class IsAdmin(permissions.BasePermission):
